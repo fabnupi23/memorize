@@ -1,0 +1,7 @@
+vamos a trabar tres herramientas de memorización que nos brinda React, que son:
+
+*Memo
+*UseMemo
+*useCallback
+
+Vamos a ver como usarlo y cuando usarlo, veremos los casos de uso concretos donde nos van a ser utiles y también hablaremos de cuando NO usarlos  
