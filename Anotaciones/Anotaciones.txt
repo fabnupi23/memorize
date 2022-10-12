@@ -4,4 +4,41 @@ vamos a trabar tres herramientas de memorización que nos brinda React, que son:
 *UseMemo
 *useCallback
 
-Vamos a ver como usarlo y cuando usarlo, veremos los casos de uso concretos donde nos van a ser utiles y también hablaremos de cuando NO usarlos  
+Vamos a ver como usarlo y cuando usarlo, veremos los casos de uso concretos donde nos van a ser utiles y también hablaremos de cuando NO usarlos.
+
+El primero a trabajar es un Memorize y después de crearlo vamos a cear un estado en un nuestro App.js, este estado va a almacenar una lista de usuarios, en este caso como valor
+inicial le vamos a enviar unos usuarios y para ello creamos una variable llamada initialUsers que va a ser un array de objetos, cada objeto representara al usuario el cual tendra
+un id y un name para hacerlo un poco mas sencillo.
+
+Vamos a mostrar los usuarios y para ello vamos a mostrarnos dos componentes que se llaman List.js e Item.js, después importamos List al app.js y le pasamos los usuarios como propiedades
+y en la lista los recibimos.
+
+En el archivo List.js creamos la eqtiqueta ul y dentro de ella creamos varios li de acuerdo a los elementos que tiene la lista de users, para ello itereamos sobre la lista con un map
+y por cada usuario retornamos un li el cual lo hacemos en el componente item....
+
+                function List({ users }) {
+                return (
+                    <ul>
+                        { users.map(user => (
+                        <Item/>
+                        ))}
+                    </ul>
+                )
+                }
+Al momento de ejecutar esto, verificamos que se nos muestre dos items en nuestra lista.
+
+Ahora a cada item vamos a pasarle el usuario actual sobre el cual estamos iterando .
+
+En App.js creamos un un input y en el mismo app.js lo vinsulamos con un estado y de valor inicial le ponemos "Nuevo" ahora para vincular la caja de texto con el estado, para ello
+le asignamos el texto como value, para editarlo manejamos el cambio en el formulario y enviamos e.target.value, como toda función que se dispara en un evento se inyecta en su primer argumento
+el evento en si y de ese evento podemos extraer el target con su respectivo value que sera el valor al que vamos a actualizarle el estado text. 
+
+
+(Un efecto se ejecuta cada vez que su componente hace un render)
+
+
+Para poder ver el problema que queremos solucionar nos dirigimos a List.js e importamos el useEffect, el problema como tal es que al momento de renderizar una lista 
+no me repita renderizado...
+
+El metodo memo nos va a ayudar a memorizar un componente en base a sus propiedades, es decir que cuando las propiedades de un componente sean iguales el componente 
+no deberia volver a renderizarse 
